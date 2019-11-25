@@ -156,3 +156,183 @@ console.log(getStatus());
 console.log(getAge());
 testConsole();
 testConsoleVoid();
+
+
+// arguments
+
+function sum(x: number, y: number): number {
+    return x + y;
+}
+const result = sum(5, 2);
+console.log(result)
+
+
+// function as data types
+
+type Age = number;
+let age: Age = 1;
+console.log(age);
+
+type multipy = (x: number, y: number) => number;
+const mult: multipy = (x: number, y: number): number => {
+    return x * y
+}
+const mult2: multipy = (x: number, y: number): number => x * y
+console.log(mult(4, 3));
+console.log(mult2(3, 3));
+
+
+// Object
+
+
+type User = {
+    name: string,
+    address: string,
+    status: boolean
+}
+
+let user = {
+    name: "A. A. Sumitro",
+    address: "Heaven",
+}
+
+console.log(user);
+
+
+// union type
+
+let phone: number | string;
+
+phone = 62822000000;
+console.log(phone);
+phone = "0822000000"
+console.log(phone);
+
+
+
+// default paramenter
+
+const fullName = (firstName: string, lastName: string = "code"): string => {
+    return firstName + lastName
+}
+
+console.log(fullName("Just "))
+console.log(fullName("Just ", "Test"))
+
+
+// optional paramenter
+
+const getMaName = (x: string, y?: string): string => {
+    return x + " "  + y;
+}
+console.log(getMaName("Test", "Just"))
+console.log(getMaName("Test")) // undifined
+
+
+//  class
+
+export class Data
+{
+
+    public name: string;
+
+    constructor(name: string)
+    {
+        this.name = name;
+    }
+
+}
+
+export class Data2
+{
+    constructor(public name: string) { }
+}
+
+let data = new Data("A. A. Sumitro");
+console.log(data)
+
+let data2 = new Data2("A. A. Sumitro")
+console.log(data2)
+
+
+
+
+// inheritance
+
+class CarTest
+{
+    constructor(
+        public name: string
+    ) { }
+}
+
+class Toyota extends CarTest
+{
+    type: string = "avanza";
+    color: string = "white";
+
+    // constructor  on child class
+    body_number: string;
+    constructor(name: string, body_number: string) {
+        super(name);
+        this.body_number = body_number;
+    }
+    // end constructor  on child class
+
+    getModel(): { type: string, color: string } {
+        return {
+            type: this.type,
+            color: this.color
+        };
+    };
+
+
+    // getter setter
+
+    private sales: string = "";
+
+    set setSales(val: string) {
+        this.sales = val;
+    }
+
+    get getSales(): string {
+        return this.sales
+    }
+
+    // static property
+
+    static getPrice: number = 120000;
+}
+
+let toyota = new Toyota("toyota", "123#asd$1sad")
+console.log(toyota.name);
+console.log(toyota.getModel());
+
+// getter setter
+toyota.setSales = "yunita sari"
+console.log(toyota.getSales)
+
+// static property
+console.log(Toyota.getPrice)
+
+
+// abstraction
+
+abstract class Vehicle {
+
+    abstract wheels: number;
+
+    start(): void {
+        console.log("brummmm bum bum bum . . . .")
+    }
+
+}
+
+
+// class Car extends Vehicle {
+
+// }
+
+// class Motorcycler extends Vehicle {
+
+// }
